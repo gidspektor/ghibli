@@ -2,20 +2,25 @@
 <html>
 <head>
     <link href="style.css" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+    <link href="public/style.css" rel="stylesheet">
     <meta charset="utf-8">
     <title>Ghibli movies</title>
 </head>
 <body>
-    <div>
+    <nav>
+        <button class="home navbut" type="button">Home</button>
+        <button class="best navbut" type="button">Rotten Tomatoes Highest Rated</button>
+        <a href="/login"><button class="navbut" type="button">Login</button><a/>
+    </nav> 
+    <div class="searchBox">
         <h3>Search for a Ghibli film</h3>
-        <input id="search" type="text"/>
-         <button id="searchSubmit" type="button">search</button>
+        <input class="search" type="text"/>
+         <button class="searchSubmit" type="button">search</button>
     </div>
-    <form id="info" method="POST" action="/edit">
-    <div id="root">
-         {{{body}}}
-    </div>
-    </form>
+        <div id="root">
+            {{{body}}}
+        </div>
 </body>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="scripts.js"></script>

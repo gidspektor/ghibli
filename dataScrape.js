@@ -1,15 +1,14 @@
 
-module.exports.dataScrape = async (db,fetch) => {
+module.exports.dataScrape = async (fetch, db) => {
     let data = fetch('https://ghibliapi.herokuapp.com/films')
     await data
         .then((data) => {
-            data.json()
+           data.json()
                 .then((data) => {
-                    return db.collection('movie').insert({
-                        "movies": data
-                    }, function(err, result) {
-                        console.log("Inserted an address into the places collection.")
-                        console.log(result.ops)
+                     db.collection('movies').insertMany(data)
+                    .then(() => {
+                        console.log('stored'),
+                        db.close()
                     })
                 })
         })

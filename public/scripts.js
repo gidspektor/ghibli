@@ -3,49 +3,99 @@ let review = document.querySelectorAll(".score")
 let card = document.querySelectorAll(".card")
 let yourReview = document.querySelectorAll(".yourScore")
 let select = document.querySelectorAll(".sel")
+let best = document.querySelectorAll(".best")
+let home = document.querySelectorAll(".home")
+let searchButton = document.querySelectorAll(".searchSubmit")
+let searchBox = document.querySelectorAll(".search")
+let userBest = document.querySelectorAll(".userBest")
 
 card.forEach(function (movie) {
-    let count = 0
     movie.addEventListener("click", function () {
-
-            displayScore(movie, review, count)
-            displayUserScore(movie, yourReview, count)
-        count = 1
+            displayScore(movie, review)
+            displayUserScore(movie, yourReview)
     })
 })
 
-document.getElementById("searchSubmit").addEventListener("click", function () {
-    let card = document.querySelectorAll(".card")
-    let searchBox = document.getElementById("search")
-    let searched = searchBox.value
+searchButton.forEach(function(button) {
+    button.addEventListener("click", function () {
+        searched(searchBox, function(searched) {
+         search(card, searched)   
+        })
+    })
+})
+
+best.forEach(function (button) {
+    button.addEventListener("click", function() {
+            displayTopMovies(card)
+    })
+})
+
+userBest.forEach(function (button) {
+    button.addEventListener("click", function() {
+            displayUsersTopMovies(card)
+    })
+})
+
+home.forEach(function(button) {
+    button.addEventListener("click", function () {
+        reset(card)
+    })
+})
+
+let searched = (searchBox, callback) => {
+    searchBox.forEach(function(searched) {
+        callback(searched.value)
+    })
+}
+
+let search = (card, searched) => {
     card.forEach(function (element) {
         element.style.display = "block"
         if (!element.dataset.title.match(searched)) {
             element.style.display = "none"
         }
     })
-})
+}
 
-let displayScore = (movie, review, count) => {
+let displayScore = (movie, review) => {
     review.forEach(function (score) {
-        if (movie.dataset.title === score.dataset.title && count === 0) {
-            movie.style.height = "500px"
+        if (movie.dataset.title === score.dataset.title) {
             score.style.display = "block"
         } else {
             score.style.display = "none"
-            movie.style.height = ""
         }
     })
 }
 
-let displayUserScore = (movie, yourReview, count) => {
-    yourReview.forEach(function (input) {
-        if (movie.dataset.title === input.dataset.title && count === 0) {
-            input.style.display = "block"
+let displayUserScore = (movie, youReview) => {
+    youReview.forEach(function (score) {
+        if (movie.dataset.title === score.dataset.title) {
+            score.style.display = "block"
+        } else {
+            score.style.display = "none"
         }
-        else {
-            input.style.display = "none"
+    })
+}
+   
+let displayTopMovies = (card) => {
+    card.forEach(function(mov) {
+    mov.style.display = "none" 
+    if (mov.dataset.rt_score > 95) {   
+                mov.style.display = "block"            
+         }
+    })   
+}
 
+let displayUsersTopMovies = (card) => {
+    card.forEach(function(mov) {
+        if (mov.dataset.user_score == 0 || !mov.dataset.user_score > 7) {
+            mov.style.display = "none"
         }
+    })
+}
+
+let reset = (card) => {
+    card.forEach(function(mov) {
+        mov.style.display = "block"
     })
 }

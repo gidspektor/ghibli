@@ -1,29 +1,32 @@
-{{#each data.[0].movies}}
-<div class="card"  data-title="{{title}}">
-    <h1>{{title}}</h1>
-    <p>{{description}}</p>
-    <div class="score"  data-title="{{title}}">
-        <img src="rotten.png"/>
-         <p class="review">{{rt_score}}%</p>
+{{#each data}}
+<form method="POST" action="/publicScore">
+    <div class="card"  data-title="{{title}}" data-rt_score={{rt_score}}>
+        <h1>{{title}}</h1>
+        <p>{{description}}</p>
+        <div class="score"  data-title="{{title}}">
+            <img src="rotten.png"/>
+            <p class="review">{{rt_score}}%</p>
+        </div>
+        <div class="yourScore" data-title="{{title}}">
+            <h4>Your score</h4>
+            <select class="sel" name="{{title}}">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        <div>
+            <h5>{{5}} people voted 5 stars</h5>
+            <h5>{{4}} people voted 4 stars</h5>
+            <h5>{{3}} people voted 3 stars</h5>
+            <h5>{{2}} people voted 2 stars</h5>
+            <h5>{{1}} people voted 1 star</h5>
+            <h5>/5</h5>
+        </div>
+        <input type="submit" value="update"/>
+        </div>
     </div>
-    <div class="yourScore" data-title="{{title}}">
-        <h4>Your score</h4>
-        <select class="sel" name="{{title}}">
-             <option value="0"></option>
-             <option value="1">1</option>
-             <option value="2">2</option>
-             <option value="3">3</option>
-             <option value="4">4</option>
-             <option value="5">5</option>
-             <option value="6">6</option>
-             <option value="7">7</option>
-             <option value="8">8</option>
-             <option value="9">9</option>
-             <option value="10">10</option>
-        </select>
-        <h3>/10</h3>
-        <input id="update" type="submit" value="update" />
-    </div>
-</div>
+</form>
 {{/each}}
-

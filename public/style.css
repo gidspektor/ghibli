@@ -11,13 +11,13 @@ html {
     background: #F6F6F6;
 }
 
-.body {
+#body {
     opacity: 0.3;
 }
 
 .logo {
     height: 800px;
-    background-image: url("../logo.png");
+    background-image: url("/logo.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -38,7 +38,7 @@ h1 {
     background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
     margin: 0 0 2rem 0;
     font-size: 1.5rem;
-    color: white;
+    color: #ffff;
 }
 
 p {
@@ -46,16 +46,38 @@ p {
     margin: 0;
 }
 
+nav {
+    float: right;
+    background-image: linear-gradient(120deg, #ffc3a0 0%, #ffafbd 100%);
+    border-radius: 5px;
+}
+
+.navbut {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    height: 40px;
+    transition: 0.5s ease-in-out;
+}
+
+.navbut:hover {
+    opacity: 0.4;
+}
+
+.searchBox {
+    margin-left: 7%;
+}
+
 .score {
     display: none;
-    position: relative;
-    left: 10%;
+    float: left;
+    margin-left: 10%;
 }
 
 .review {
     font-size: x-large;
     position: relative;
-    left: 3%;
+    left: 20%;
 }
 
 img {
@@ -65,9 +87,9 @@ img {
 
 .yourScore {
     display: none;
-    position: relative;
-    bottom: 40%;
-    left: 70%;
+    float: right;
+    padding-right: 20%;
+    padding-bottom: 5%;
 }
 
 .card {
@@ -80,21 +102,42 @@ img {
     cursor: pointer;
 }
 
+.loginBox {
+    height: 25%;
+    width:  30%;
+    border: 2px solid black;
+    margin: 0 auto;
+    position: relative;
+    top: 20%;
+    background-color: #ffffff;
+}
+
+.login {
+    position: absolute;
+    top: 30%;
+    padding-left: 15%;
+}
+
+.publicLogin {
+    position: absolute;
+    top: 60%;
+    padding-left: 40%;
+}
+
+.loginText {
+    padding-left: 20%;
+    color: #000000;
+}
+
+.publicText {
+    position: absolute;
+    top: 40%;
+    padding-left: 20%;
+}
+
 .card:hover {
     box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
     transform: translate3D(0, -2px, 0);
-}
-
-@media screen and (min-width: 600px) {
-    .card {
-        flex: 1 1 calc(50% - 2rem);
-    }
-}
-
-@media screen and (min-width: 900px) {
-    .card {
-        flex: 1 1 calc(33% - 2rem);
-    }
 }
 
 .card:nth-child(2n) h1 {
