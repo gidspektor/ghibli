@@ -6,6 +6,7 @@ module.exports.dataScrape = async (fetch, db) => {
            data.json()
                 .then((data) => {
                      db.collection('movies').insertMany(data)
+                     db.collection('newUser').insertMany(data)
                     .then(() => {
                         console.log('stored'),
                         db.close()

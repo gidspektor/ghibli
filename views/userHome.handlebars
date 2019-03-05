@@ -1,26 +1,39 @@
+
+<nav>
+    <button class="home navbut" type="button">Home</button>
+    <button class="best navbut" type="button">Rotten Tomatoes Highest Rated</button>
+    <a href="/public"><button class="userBest navbut" type="button">Public Page</button><a/>
+</nav> 
+<div class="searchBox">
+    <h3>Search for a Ghibli film</h3>
+    <input class="search" type="text"/>
+        <button class="searchSubmit" type="button">search</button>
+</div>
+<div id="root">
 {{#each data}}
-<form method="POST" action="/userScore">
-    <div class="card"  data-title="{{title}}" data-rt_score={{rt_score}}>
-        <h1>{{title}}</h1>
-        <p>{{description}}</p>
-    <div class="score"  data-title="{{title}}">
-        <img src="rotten.png"/>
-         <p class="review">{{rt_score}}%</p>
-    </div>
-    <div class="yourScore" data-title="{{title}}">
-        <h4>Your score</h4>
-        <select class="sel" name="{{title}}">
-             <option value="0">0</option>
-             <option value="1">1</option>
-             <option value="2">2</option>
-             <option value="3">3</option>
-             <option value="4">4</option>
-             <option value="5">5</option>
-        </select>
-            <h3>{{user_score}}</h3>
-            <h3>/5</h3>
-        <input type="submit" value="update"/>
-    </div>
-    </div>
-</form>
-{{/each}}
+    <form method="POST" action="/userScore">
+        <div class="card"  data-title="{{title}}" data-rt_score={{rt_score}}>
+            <h1>{{title}}</h1>
+            <p>{{description}}</p>
+        <div class="score"  data-title="{{title}}">
+            <img src="rotten.png"/>
+            <p class="review">{{rt_score}}%</p>
+        </div>
+        <div class="yourScore" data-title="{{title}}">
+            <h4>Your score</h4>
+            <select class="sel" name="{{title}}">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+                <h3>{{user_score}}</h3>
+                <h3>/5</h3>
+            <input type="submit" value="update"/>
+        </div>
+        </div>
+    </form>
+    {{/each}}
+</div>

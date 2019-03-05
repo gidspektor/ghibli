@@ -44,7 +44,7 @@ app.get('/dataScrape', (req,res) => {
 
 app.get('/login', (req, res) => {
     req.session.destroy()
-    res.render('login', {layout: 'firstPage'})
+    res.render('login')
 })
 
 app.post('/checkExistence', (req, res) => {
@@ -92,7 +92,7 @@ app.get('/userPage', (req, res) => {
         let db = client.db(dbName)
         let email = req.session.email
         user.grabUser(db, email, function(docs) {
-            res.render('userHome', {layout: 'loginMain', data: docs})
+            res.render('userHome', {data: docs})
         })
     })
 })

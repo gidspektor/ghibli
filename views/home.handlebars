@@ -1,32 +1,45 @@
-{{#each data}}
-<form method="POST" action="/publicScore">
-    <div class="card"  data-title="{{title}}" data-rt_score={{rt_score}}>
-        <h1>{{title}}</h1>
-        <p>{{description}}</p>
-        <div class="score"  data-title="{{title}}">
-            <img src="rotten.png"/>
-            <p class="review">{{rt_score}}%</p>
+
+<nav>
+    <button class="home navbut" type="button">Home</button>
+    <button class="best navbut" type="button">Rotten Tomatoes Highest Rated</button>
+    <a href="/login"><button class="navbut" type="button">Login</button><a/>
+</nav> 
+<div class="searchBox">
+    <h3>Search for a Ghibli film</h3>
+    <input class="search" type="text"/>
+        <button class="searchSubmit" type="button">search</button>
+</div>
+<div id="root">
+    {{#each data}}   
+    <form method="POST" action="/publicScore">
+        <div class="card"  data-title="{{title}}" data-rt_score={{rt_score}}>
+            <h1>{{title}}</h1>
+            <p>{{description}}</p>
+            <div class="score"  data-title="{{title}}">
+                <img src="rotten.png"/>
+                <p class="review">{{rt_score}}%</p>
+            </div>
+            <div class="yourScore" data-title="{{title}}">
+                <h4>Your score</h4>
+                <select class="sel" name="{{title}}">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            <div>
+                <h5>{{5}} people voted 5 stars</h5>
+                <h5>{{4}} people voted 4 stars</h5>
+                <h5>{{3}} people voted 3 stars</h5>
+                <h5>{{2}} people voted 2 stars</h5>
+                <h5>{{1}} people voted 1 star</h5>
+                <h5>/5</h5>
+            </div>
+            <input type="submit" value="update"/>
+            </div>
         </div>
-        <div class="yourScore" data-title="{{title}}">
-            <h4>Your score</h4>
-            <select class="sel" name="{{title}}">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-        <div>
-            <h5>{{5}} people voted 5 stars</h5>
-            <h5>{{4}} people voted 4 stars</h5>
-            <h5>{{3}} people voted 3 stars</h5>
-            <h5>{{2}} people voted 2 stars</h5>
-            <h5>{{1}} people voted 1 star</h5>
-            <h5>/5</h5>
-        </div>
-        <input type="submit" value="update"/>
-        </div>
-    </div>
-</form>
-{{/each}}
+    </form>
+    {{/each}}
+</div>
